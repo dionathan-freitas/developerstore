@@ -1,0 +1,79 @@
+name: dockercompose10728982788651281339
+services:
+  ambev.developerevaluation.cache:
+    command:
+      - redis-server
+      - --requirepass
+      - ev@luAt10n
+    container_name: ambev_developer_evaluation_cache
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: ev@luAt10n
+      MONGO_INITDB_ROOT_USERNAME: developer
+    image: redis:7.4.1-alpine
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 6379
+        protocol: tcp
+  ambev.developerevaluation.database:
+    container_name: ambev_developer_evaluation_database
+    environment:
+      POSTGRES_DB: developer_evaluation
+      POSTGRES_PASSWORD: ev@luAt10n
+      POSTGRES_USER: developer
+    image: postgres:13
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        protocol: tcp
+    restart: unless-stopped
+  ambev.developerevaluation.nosql:
+    container_name: ambev_developer_evaluation_nosql
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: ev@luAt10n
+      MONGO_INITDB_ROOT_USERNAME: developer
+    image: mongo:8.0
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 27017
+        protocol: tcp
+  ambev.developerevaluation.webapi:
+    build:
+      context: C:\Users\Dionathan\Desktop\TesteNTTData\template\backend
+      dockerfile: src/Ambev.DeveloperEvaluation.WebApi/Dockerfile
+    container_name: ambev_developer_evaluation_webapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ASPNETCORE_HTTPS_PORTS: "8081"
+    image: ambevdeveloperevaluationwebapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+      - mode: ingress
+        target: 8081
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: C:\Users\Dionathan\AppData\Roaming/Microsoft/UserSecrets
+        target: /home/app/.microsoft/usersecrets
+        read_only: true
+        bind:
+          create_host_path: true
+      - type: bind
+        source: C:\Users\Dionathan\AppData\Roaming/ASP.NET/Https
+        target: /home/app/.aspnet/https
+        read_only: true
+        bind:
+          create_host_path: true
+networks:
+  default:
+    name: dockercompose10728982788651281339_default
