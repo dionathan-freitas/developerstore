@@ -10,7 +10,9 @@
         "tags": [
           "Auth"
         ],
+        "summary": "Authenticates a user with their credentials",
         "requestBody": {
+          "description": "The authentication request",
           "content": {
             "application/json": {
               "schema": {
@@ -93,12 +95,324 @@
         }
       }
     },
+    "/api/sales": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Retrieves the list of all sales.",
+        "responses": {
+          "200": {
+            "description": "Returns the list of sales."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Creates a new sale.",
+        "requestBody": {
+          "description": "Sale data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSaleCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSaleCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSaleCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sale successfully created.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid sale data.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sales/{id}": {
+      "get": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Retrieves the details of a specific sale by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the sale.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the sale data."
+          },
+          "404": {
+            "description": "Sale not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Updates an existing sale.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the sale to update.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated sale data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSaleCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Sale successfully updated."
+          },
+          "400": {
+            "description": "Invalid data.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Sale not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Deletes a sale.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the sale to delete.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Sale successfully deleted."
+          },
+          "404": {
+            "description": "Sale not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sales/{saleId}/items/{itemId}": {
+      "delete": {
+        "tags": [
+          "Sales"
+        ],
+        "summary": "Cancels a specific item from a sale.",
+        "parameters": [
+          {
+            "name": "saleId",
+            "in": "path",
+            "description": "ID of the sale.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "itemId",
+            "in": "path",
+            "description": "ID of the item to cancel.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Item successfully canceled."
+          },
+          "404": {
+            "description": "Sale or item not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users": {
       "post": {
         "tags": [
           "Users"
         ],
+        "summary": "Creates a new user",
         "requestBody": {
+          "description": "The user creation request",
           "content": {
             "application/json": {
               "schema": {
@@ -166,10 +480,12 @@
         "tags": [
           "Users"
         ],
+        "summary": "Retrieves a user by their ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "The unique identifier of the user",
             "required": true,
             "schema": {
               "type": "string",
@@ -244,10 +560,12 @@
         "tags": [
           "Users"
         ],
+        "summary": "Deletes a user by their ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "The unique identifier of the user to delete",
             "required": true,
             "schema": {
               "type": "string",
@@ -347,36 +665,44 @@
         "properties": {
           "email": {
             "type": "string",
+            "description": "Gets or sets the user's email address for authentication.\r\nMust be a valid email format.",
             "nullable": true
           },
           "password": {
             "type": "string",
+            "description": "Gets or sets the user's password for authentication.\r\nMust match the stored password after hashing.",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Represents the authentication request model for user login."
       },
       "AuthenticateUserResponse": {
         "type": "object",
         "properties": {
           "token": {
             "type": "string",
+            "description": "Gets or sets the JWT token for authenticated user",
             "nullable": true
           },
           "email": {
             "type": "string",
+            "description": "Gets or sets the user's email address",
             "nullable": true
           },
           "name": {
             "type": "string",
+            "description": "Gets or sets the user's full name",
             "nullable": true
           },
           "role": {
             "type": "string",
+            "description": "Gets or sets the user's role in the system",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Represents the response returned after user authentication"
       },
       "AuthenticateUserResponseApiResponseWithData": {
         "type": "object",
@@ -401,23 +727,66 @@
         },
         "additionalProperties": false
       },
+      "CreateSaleCommand": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "branchId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSaleItemDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSaleItemDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateUserRequest": {
         "type": "object",
         "properties": {
           "username": {
             "type": "string",
+            "description": "Gets or sets the username. Must be unique and contain only valid characters.",
             "nullable": true
           },
           "password": {
             "type": "string",
+            "description": "Gets or sets the password. Must meet security requirements.",
             "nullable": true
           },
           "phone": {
             "type": "string",
+            "description": "Gets or sets the phone number in format (XX) XXXXX-XXXX.",
             "nullable": true
           },
           "email": {
             "type": "string",
+            "description": "Gets or sets the email address. Must be a valid email format.",
             "nullable": true
           },
           "status": {
@@ -427,25 +796,30 @@
             "$ref": "#/components/schemas/UserRole"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "Represents a request to create a new user in the system."
       },
       "CreateUserResponse": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
+            "description": "The unique identifier of the created user",
             "format": "uuid"
           },
           "name": {
             "type": "string",
+            "description": "The user's full name",
             "nullable": true
           },
           "email": {
             "type": "string",
+            "description": "The user's email address",
             "nullable": true
           },
           "phone": {
             "type": "string",
+            "description": "The user's phone number",
             "nullable": true
           },
           "role": {
@@ -455,7 +829,8 @@
             "$ref": "#/components/schemas/UserStatus"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "API response model for CreateUser operation"
       },
       "CreateUserResponseApiResponseWithData": {
         "type": "object",
@@ -485,18 +860,22 @@
         "properties": {
           "id": {
             "type": "string",
+            "description": "The unique identifier of the user",
             "format": "uuid"
           },
           "name": {
             "type": "string",
+            "description": "The user's full name",
             "nullable": true
           },
           "email": {
             "type": "string",
+            "description": "The user's email address",
             "nullable": true
           },
           "phone": {
             "type": "string",
+            "description": "The user's phone number",
             "nullable": true
           },
           "role": {
@@ -506,7 +885,8 @@
             "$ref": "#/components/schemas/UserStatus"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "description": "API response model for GetUser operation"
       },
       "GetUserResponseApiResponseWithData": {
         "type": "object",
@@ -527,6 +907,76 @@
           },
           "data": {
             "$ref": "#/components/schemas/GetUserResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "SaleItemDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSaleCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "branchId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SaleItemDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
