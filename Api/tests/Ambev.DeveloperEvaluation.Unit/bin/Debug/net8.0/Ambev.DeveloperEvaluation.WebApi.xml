@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ambev.DeveloperEvaluation.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthController">
+            <summary>
+            Controller for authentication operations
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthController.#ctor(MediatR.IMediator,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of AuthController
+            </summary>
+            <param name="mediator">The mediator instance</param>
+            <param name="mapper">The AutoMapper instance</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthController.AuthenticateUser(Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequest,System.Threading.CancellationToken)">
+            <summary>
+            Authenticates a user with their credentials
+            </summary>
+            <param name="request">The authentication request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Authentication token if successful</returns>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserProfile">
+            <summary>
+            AutoMapper profile for authentication-related mappings
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserProfile"/> class
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequest">
+            <summary>
+            Represents the authentication request model for user login.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequest.Email">
+            <summary>
+            Gets or sets the user's email address for authentication.
+            Must be a valid email format.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequest.Password">
+            <summary>
+            Gets or sets the user's password for authentication.
+            Must match the stored password after hashing.
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequestValidator">
+            <summary>
+            Validator for AuthenticateUserRequest
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserRequestValidator.#ctor">
+            <summary>
+            Initializes validation rules for AuthenticateUserRequest
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserResponse">
+            <summary>
+            Represents the response returned after user authentication
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserResponse.Token">
+            <summary>
+            Gets or sets the JWT token for authenticated user
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserResponse.Email">
+            <summary>
+            Gets or sets the user's email address
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserResponse.Name">
+            <summary>
+            Gets or sets the user's full name
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthenticateUserFeature.AuthenticateUserResponse.Role">
+            <summary>
+            Gets or sets the user's role in the system
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.GetSales">
+            <summary>
+            Retrieves the list of all sales.
+            </summary>
+            <returns>List of sales.</returns>
+            <response code="200">Returns the list of sales.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.GetSaleById(System.Guid)">
+            <summary>
+            Retrieves the details of a specific sale by ID.
+            </summary>
+            <param name="id">ID of the sale.</param>
+            <returns>Sale details.</returns>
+            <response code="200">Returns the sale data.</response>
+            <response code="404">Sale not found.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.CreateSale(Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.CreateSaleCommand)">
+            <summary>
+            Creates a new sale.
+            </summary>
+            <param name="command">Sale data.</param>
+            <returns>Created sale ID.</returns>
+            <response code="201">Sale successfully created.</response>
+            <response code="400">Invalid sale data.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.UpdateSale(System.Guid,Ambev.DeveloperEvaluation.WebApi.Features.Sales.UpdateSale.UpdateSaleCommand)">
+            <summary>
+            Updates an existing sale.
+            </summary>
+            <param name="id">ID of the sale to update.</param>
+            <param name="command">Updated sale data.</param>
+            <returns>No content.</returns>
+            <response code="204">Sale successfully updated.</response>
+            <response code="400">Invalid data.</response>
+            <response code="404">Sale not found.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.DeleteSale(System.Guid)">
+            <summary>
+            Deletes a sale.
+            </summary>
+            <param name="id">ID of the sale to delete.</param>
+            <returns>No content.</returns>
+            <response code="204">Sale successfully deleted.</response>
+            <response code="404">Sale not found.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.CancelItem(System.Guid,System.Guid)">
+            <summary>
+            Cancels a specific item from a sale.
+            </summary>
+            <param name="saleId">ID of the sale.</param>
+            <param name="itemId">ID of the item to cancel.</param>
+            <returns>No content.</returns>
+            <response code="204">Item successfully canceled.</response>
+            <response code="404">Sale or item not found.</response>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserProfile">
+            <summary>
+            Profile for mapping between Application and API CreateUser responses
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserProfile.#ctor">
+            <summary>
+            Initializes the mappings for CreateUser feature
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest">
+            <summary>
+            Represents a request to create a new user in the system.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Username">
+            <summary>
+            Gets or sets the username. Must be unique and contain only valid characters.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Password">
+            <summary>
+            Gets or sets the password. Must meet security requirements.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Phone">
+            <summary>
+            Gets or sets the phone number in format (XX) XXXXX-XXXX.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Email">
+            <summary>
+            Gets or sets the email address. Must be a valid email format.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Status">
+            <summary>
+            Gets or sets the initial status of the user account.
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest.Role">
+            <summary>
+            Gets or sets the role assigned to the user.
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequestValidator">
+            <summary>
+            Validator for CreateUserRequest that defines validation rules for user creation.
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequestValidator.#ctor">
+            <summary>
+            Initializes a new instance of the CreateUserRequestValidator with defined validation rules.
+            </summary>
+            <remarks>
+            Validation rules include:
+            - Email: Must be valid format (using EmailValidator)
+            - Username: Required, length between 3 and 50 characters
+            - Password: Must meet security requirements (using PasswordValidator)
+            - Phone: Must match international format (+X XXXXXXXXXX)
+            - Status: Cannot be Unknown
+            - Role: Cannot be None
+            </remarks>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse">
+            <summary>
+            API response model for CreateUser operation
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Id">
+            <summary>
+            The unique identifier of the created user
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Name">
+            <summary>
+            The user's full name
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Email">
+            <summary>
+            The user's email address
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Phone">
+            <summary>
+            The user's phone number
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Role">
+            <summary>
+            The user's role in the system
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserResponse.Status">
+            <summary>
+            The current status of the user
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserProfile">
+            <summary>
+            Profile for mapping DeleteUser feature requests to commands
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserProfile.#ctor">
+            <summary>
+            Initializes the mappings for DeleteUser feature
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserRequest">
+            <summary>
+            Request model for deleting a user
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserRequest.Id">
+            <summary>
+            The unique identifier of the user to delete
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserRequestValidator">
+            <summary>
+            Validator for DeleteUserRequest
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.DeleteUser.DeleteUserRequestValidator.#ctor">
+            <summary>
+            Initializes validation rules for DeleteUserRequest
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserProfile">
+            <summary>
+            Profile for mapping GetUser feature requests to commands
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserProfile.#ctor">
+            <summary>
+            Initializes the mappings for GetUser feature
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserRequest">
+            <summary>
+            Request model for getting a user by ID
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserRequest.Id">
+            <summary>
+            The unique identifier of the user to retrieve
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserRequestValidator">
+            <summary>
+            Validator for GetUserRequest
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserRequestValidator.#ctor">
+            <summary>
+            Initializes validation rules for GetUserRequest
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse">
+            <summary>
+            API response model for GetUser operation
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Id">
+            <summary>
+            The unique identifier of the user
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Name">
+            <summary>
+            The user's full name
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Email">
+            <summary>
+            The user's email address
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Phone">
+            <summary>
+            The user's phone number
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Role">
+            <summary>
+            The user's role in the system
+            </summary>
+        </member>
+        <member name="P:Ambev.DeveloperEvaluation.WebApi.Features.Users.GetUser.GetUserResponse.Status">
+            <summary>
+            The current status of the user
+            </summary>
+        </member>
+        <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController">
+            <summary>
+            Controller for managing user operations
+            </summary>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController.#ctor(MediatR.IMediator,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of UsersController
+            </summary>
+            <param name="mediator">The mediator instance</param>
+            <param name="mapper">The AutoMapper instance</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController.CreateUser(Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserRequest,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new user
+            </summary>
+            <param name="request">The user creation request</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>The created user details</returns>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController.GetUser(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves a user by their ID
+            </summary>
+            <param name="id">The unique identifier of the user</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>The user details if found</returns>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController.DeleteUser(System.Guid,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a user by their ID
+            </summary>
+            <param name="id">The unique identifier of the user to delete</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Success response if the user was deleted</returns>
+        </member>
+    </members>
+</doc>
