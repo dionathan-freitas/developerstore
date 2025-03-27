@@ -36,7 +36,7 @@ This project is part of the technical challenge for a developer position at Ambe
 
 ### 2. Start the Services (PostgreSQL, Redis, Mongo)
 
-```bash
+bash
 docker-compose up -d
 This will start all required services for the API.
 
