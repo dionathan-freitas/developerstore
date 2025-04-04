@@ -44,7 +44,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "GetSales",
     "RelativePath": "api/sales",
     "HttpMethod": "GET",
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "CreateSale",
     "RelativePath": "api/sales",
     "HttpMethod": "POST",
@@ -68,8 +68,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.CreateSaleCommand",
+        "Name": "request",
+        "Type": "Ambev.DeveloperEvaluation.WebApi.DTOs.Sales.CreateSaleRequest",
         "IsRequired": true
       }
     ],
@@ -95,7 +95,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "GetSaleById",
     "RelativePath": "api/sales/{id}",
     "HttpMethod": "GET",
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "UpdateSale",
     "RelativePath": "api/sales/{id}",
     "HttpMethod": "PUT",
@@ -139,8 +139,8 @@
         "IsRequired": true
       },
       {
-        "Name": "command",
-        "Type": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.UpdateSale.UpdateSaleCommand",
+        "Name": "request",
+        "Type": "Ambev.DeveloperEvaluation.WebApi.DTOs.Sales.UpdateSaleRequest",
         "IsRequired": true
       }
     ],
@@ -171,7 +171,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "DeleteSale",
     "RelativePath": "api/sales/{id}",
     "HttpMethod": "DELETE",
@@ -202,7 +202,7 @@
     ]
   },
   {
-    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController",
+    "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController",
     "Method": "CancelItem",
     "RelativePath": "api/sales/{saleId}/items/{itemId}",
     "HttpMethod": "DELETE",
@@ -220,22 +220,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Void",
-        "MediaTypes": [],
-        "StatusCode": 204
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Ambev.DeveloperEvaluation.WebApi.Features.Users.UsersController",

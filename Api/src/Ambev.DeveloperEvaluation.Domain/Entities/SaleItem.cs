@@ -1,5 +1,4 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Common;
-using System;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities
 {

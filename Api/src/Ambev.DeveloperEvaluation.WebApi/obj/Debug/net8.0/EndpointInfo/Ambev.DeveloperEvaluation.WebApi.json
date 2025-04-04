@@ -113,28 +113,28 @@
         ],
         "summary": "Creates a new sale.",
         "requestBody": {
-          "description": "Sale data.",
+          "description": "Sale creation data.",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSaleCommand"
+                "$ref": "#/components/schemas/CreateSaleRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSaleCommand"
+                "$ref": "#/components/schemas/CreateSaleRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CreateSaleCommand"
+                "$ref": "#/components/schemas/CreateSaleRequest"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Sale successfully created.",
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -157,7 +157,7 @@
             }
           },
           "400": {
-            "description": "Invalid sale data.",
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -199,10 +199,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the sale data."
+            "description": "OK"
           },
           "404": {
-            "description": "Sale not found.",
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -245,27 +245,27 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateSaleCommand"
+                "$ref": "#/components/schemas/UpdateSaleRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateSaleCommand"
+                "$ref": "#/components/schemas/UpdateSaleRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateSaleCommand"
+                "$ref": "#/components/schemas/UpdateSaleRequest"
               }
             }
           }
         },
         "responses": {
           "204": {
-            "description": "Sale successfully updated."
+            "description": "No Content"
           },
           "400": {
-            "description": "Invalid data.",
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -285,7 +285,7 @@
             }
           },
           "404": {
-            "description": "Sale not found.",
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -325,10 +325,10 @@
         ],
         "responses": {
           "204": {
-            "description": "Sale successfully deleted."
+            "description": "No Content"
           },
           "404": {
-            "description": "Sale not found.",
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -355,7 +355,7 @@
         "tags": [
           "Sales"
         ],
-        "summary": "Cancels a specific item from a sale.",
+        "summary": "Cancels a specific item within a sale.",
         "parameters": [
           {
             "name": "saleId",
@@ -379,28 +379,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Item successfully canceled."
-          },
-          "404": {
-            "description": "Sale or item not found.",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -727,28 +707,7 @@
         },
         "additionalProperties": false
       },
-      "CreateSaleCommand": {
-        "type": "object",
-        "properties": {
-          "customerId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "branchId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CreateSaleItemDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateSaleItemDto": {
+      "CreateSaleItemRequest": {
         "type": "object",
         "properties": {
           "productId": {
@@ -762,6 +721,27 @@
           "unitPrice": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateSaleRequest": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "branchId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateSaleItemRequest"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -938,7 +918,7 @@
         },
         "additionalProperties": { }
       },
-      "SaleItemDto": {
+      "UpdateSaleItemRequest": {
         "type": "object",
         "properties": {
           "productId": {
@@ -956,13 +936,9 @@
         },
         "additionalProperties": false
       },
-      "UpdateSaleCommand": {
+      "UpdateSaleRequest": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "customerId": {
             "type": "string",
             "format": "uuid"
@@ -974,7 +950,7 @@
           "items": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SaleItemDto"
+              "$ref": "#/components/schemas/UpdateSaleItemRequest"
             },
             "nullable": true
           }

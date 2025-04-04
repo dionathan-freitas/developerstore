@@ -13,5 +13,6 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public Guid BranchId { get; set; }
         public bool IsCancelled { get; set; } = false;
         public List<SaleItem> Items { get; set; } = new();
+        public string? CreatedAt { get; set; }
     }
 }

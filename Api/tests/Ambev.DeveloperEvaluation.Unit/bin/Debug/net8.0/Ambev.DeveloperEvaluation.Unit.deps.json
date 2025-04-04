@@ -9,6 +9,7 @@
       "Ambev.DeveloperEvaluation.Unit/1.0.0": {
         "dependencies": {
           "Ambev.DeveloperEvaluation.Application": "1.0.0",
+          "Ambev.DeveloperEvaluation.Common": "1.0.0",
           "Ambev.DeveloperEvaluation.Domain": "1.0.0",
           "Ambev.DeveloperEvaluation.ORM": "1.0.0",
           "Ambev.DeveloperEvaluation.WebApi": "1.0.0",

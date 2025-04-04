@@ -4,6 +4,45 @@
         <name>Ambev.DeveloperEvaluation.WebApi</name>
     </assembly>
     <members>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.GetSales">
+            <summary>
+            Retrieves the list of all sales.
+            </summary>
+            <returns>List of sales.</returns>
+            <response code="200">Returns the list of sales.</response>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.GetSaleById(System.Guid)">
+            <summary>
+            Retrieves the details of a specific sale by ID.
+            </summary>
+            <param name="id">ID of the sale.</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.CreateSale(Ambev.DeveloperEvaluation.WebApi.DTOs.Sales.CreateSaleRequest)">
+            <summary>
+            Creates a new sale.
+            </summary>
+            <param name="request">Sale creation data.</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.UpdateSale(System.Guid,Ambev.DeveloperEvaluation.WebApi.DTOs.Sales.UpdateSaleRequest)">
+            <summary>
+            Updates an existing sale.
+            </summary>
+            <param name="id">ID of the sale to update.</param>
+            <param name="request">Updated sale data.</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.DeleteSale(System.Guid)">
+            <summary>
+            Deletes a sale.
+            </summary>
+            <param name="id">ID of the sale to delete.</param>
+        </member>
+        <member name="M:Ambev.DeveloperEvaluation.WebApi.Controllers.SalesController.CancelItem(System.Guid,System.Guid)">
+            <summary>
+            Cancels a specific item within a sale.
+            </summary>
+            <param name="saleId">ID of the sale.</param>
+            <param name="itemId">ID of the item to cancel.</param>
+        </member>
         <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Auth.AuthController">
             <summary>
             Controller for authentication operations
@@ -85,61 +124,6 @@
             <summary>
             Gets or sets the user's role in the system
             </summary>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.GetSales">
-            <summary>
-            Retrieves the list of all sales.
-            </summary>
-            <returns>List of sales.</returns>
-            <response code="200">Returns the list of sales.</response>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.GetSaleById(System.Guid)">
-            <summary>
-            Retrieves the details of a specific sale by ID.
-            </summary>
-            <param name="id">ID of the sale.</param>
-            <returns>Sale details.</returns>
-            <response code="200">Returns the sale data.</response>
-            <response code="404">Sale not found.</response>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.CreateSale(Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale.CreateSaleCommand)">
-            <summary>
-            Creates a new sale.
-            </summary>
-            <param name="command">Sale data.</param>
-            <returns>Created sale ID.</returns>
-            <response code="201">Sale successfully created.</response>
-            <response code="400">Invalid sale data.</response>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.UpdateSale(System.Guid,Ambev.DeveloperEvaluation.WebApi.Features.Sales.UpdateSale.UpdateSaleCommand)">
-            <summary>
-            Updates an existing sale.
-            </summary>
-            <param name="id">ID of the sale to update.</param>
-            <param name="command">Updated sale data.</param>
-            <returns>No content.</returns>
-            <response code="204">Sale successfully updated.</response>
-            <response code="400">Invalid data.</response>
-            <response code="404">Sale not found.</response>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.DeleteSale(System.Guid)">
-            <summary>
-            Deletes a sale.
-            </summary>
-            <param name="id">ID of the sale to delete.</param>
-            <returns>No content.</returns>
-            <response code="204">Sale successfully deleted.</response>
-            <response code="404">Sale not found.</response>
-        </member>
-        <member name="M:Ambev.DeveloperEvaluation.WebApi.Features.Sales.SalesController.CancelItem(System.Guid,System.Guid)">
-            <summary>
-            Cancels a specific item from a sale.
-            </summary>
-            <param name="saleId">ID of the sale.</param>
-            <param name="itemId">ID of the item to cancel.</param>
-            <returns>No content.</returns>
-            <response code="204">Item successfully canceled.</response>
-            <response code="404">Sale or item not found.</response>
         </member>
         <member name="T:Ambev.DeveloperEvaluation.WebApi.Features.Users.CreateUser.CreateUserProfile">
             <summary>

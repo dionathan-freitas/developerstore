@@ -1,6 +1,8 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+﻿using Ambev.DeveloperEvaluation.Application.Sales.Commands;
+using Ambev.DeveloperEvaluation.Application.Sales.Commands.Handlers;
+using Ambev.DeveloperEvaluation.Application.Services.Sales;
+using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.ORM;
-using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CancelItem;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -21,10 +23,16 @@ public class CancelSaleItemHandlerTests
             .Options;
 
         _context = new DefaultContext(options);
-        var logger = Substitute.For<ILogger<CancelSaleItemHandler>>();
 
-        _handler = new CancelSaleItemHandler(_context, logger);
+        var logger = Substitute.For<ILogger<CancelSaleItemHandler>>();
+        var serviceLogger = Substitute.For<ILogger<SaleService>>();
+        var eventLogger = Substitute.For<ISaleEventLogger>();
+
+        var service = new SaleService(_context, serviceLogger, eventLogger);
+
+        _handler = new CancelSaleItemHandler(service, logger);
     }
+
 
     [Fact(DisplayName = "Given valid item When cancelling Then removes item and updates total")]
     public async Task Handle_ValidRequest_RemovesItem()
@@ -72,7 +80,7 @@ public class CancelSaleItemHandlerTests
             ItemId = Guid.NewGuid()
         };
 
-        Func<Task> act = () => _handler.Handle(command, CancellationToken.None);
+        var act = async () => await _handler.Handle(command, CancellationToken.None);
 
         await act.Should().ThrowAsync<KeyNotFoundException>()
             .WithMessage("Venda não encontrada.");
@@ -87,7 +95,7 @@ public class CancelSaleItemHandlerTests
             CustomerId = Guid.NewGuid(),
             BranchId = Guid.NewGuid(),
             Items = new List<SaleItem>(),
-            TotalAmount = 0m
+            TotalAmount = 0
         };
 
         _context.Sales.Add(sale);
@@ -99,7 +107,7 @@ public class CancelSaleItemHandlerTests
             ItemId = Guid.NewGuid()
         };
 
-        Func<Task> act = () => _handler.Handle(command, CancellationToken.None);
+        var act = async () => await _handler.Handle(command, CancellationToken.None);
 
         await act.Should().ThrowAsync<KeyNotFoundException>()
             .WithMessage("Item da venda não encontrado.");

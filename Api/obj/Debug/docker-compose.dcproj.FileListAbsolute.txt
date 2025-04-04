@@ -5,6 +5,7 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\appsettings
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.staticwebassets.endpoints.json
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.exe
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.dll
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\MediatR.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.EntityFrameworkCore.dll
@@ -15,16 +16,18 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\AutoMapper.
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.Application.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.Domain.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\MediatR.Contracts.dll
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.ORM.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.ORM.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.IoC.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.OpenApi.dll
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\System.IO.Pipelines.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Npgsql.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
@@ -33,8 +36,6 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.E
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Options.dll
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\System.IO.Pipelines.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\System.Text.Encodings.Web.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
@@ -49,7 +50,6 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.Exc
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.Settings.Configuration.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.Enrichers.Environment.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.Sinks.File.dll
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.OpenApi.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Primitives.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.Extensions.Diagnostics.Abstractions.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
@@ -59,6 +59,7 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.I
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Serilog.Extensions.Logging.dll
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.pdb
+C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.xml
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.Common.pdb
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.Application.pdb
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.Domain.pdb
@@ -67,4 +68,3 @@ C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.Devel
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\obj\Debug\docker-c.35A3FFBA.Up2Date
-C:\Users\Dionathan\Desktop\TesteNTTData\developerstore\Api\bin\Debug\Ambev.DeveloperEvaluation.WebApi.xml

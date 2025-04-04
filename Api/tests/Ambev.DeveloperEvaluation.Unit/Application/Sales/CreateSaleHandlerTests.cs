@@ -1,5 +1,10 @@
-﻿using Ambev.DeveloperEvaluation.ORM;
-using Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale;
+﻿using Ambev.DeveloperEvaluation.Application.Interface.Sales;
+using Ambev.DeveloperEvaluation.Application.Sales.Commands;
+using Ambev.DeveloperEvaluation.Application.Sales.Commands.Handlers;
+using Ambev.DeveloperEvaluation.Application.Services.Sales;
+using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Domain.Enums;
+using Ambev.DeveloperEvaluation.ORM;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -11,44 +16,61 @@ namespace Ambev.DeveloperEvaluation.Unit.Application.Sales;
 public class CreateSaleHandlerTests
 {
     private readonly DefaultContext _context;
+    private readonly IDiscountService _discountService;
+    private readonly ISaleEventLogger _eventLogger;
     private readonly CreateSaleHandler _handler;
 
     public CreateSaleHandlerTests()
     {
         var options = new DbContextOptionsBuilder<DefaultContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
 
         _context = new DefaultContext(options);
-        var logger = Substitute.For<ILogger<CreateSaleHandler>>();
-        _handler = new CreateSaleHandler(_context, logger);
+        _discountService = Substitute.For<IDiscountService>();
+        _eventLogger = Substitute.For<ISaleEventLogger>();
+
+        var logger = Substitute.For<ILogger<SaleService>>();
+        var saleService = new SaleService(_context, logger, _eventLogger);
+
+        _handler = new CreateSaleHandler(saleService, _discountService);
     }
 
-    [Fact(DisplayName = "Given valid sale data When creating Then creates sale successfully")]
-    public async Task Handle_ValidData_CreatesSale()
+    [Fact(DisplayName = "Given valid create sale command When handled Then sale is persisted and ID returned")]
+    public async Task Handle_ValidCommand_ReturnsSaleId()
     {
-
+        // Arrange
         var command = new CreateSaleCommand
         {
             CustomerId = Guid.NewGuid(),
             BranchId = Guid.NewGuid(),
-            Items = new List<CreateSaleItemDto>
+            Items = new List<CreateSaleItemCommand>
             {
-                new CreateSaleItemDto
+                new CreateSaleItemCommand
                 {
                     ProductId = Guid.NewGuid(),
                     Quantity = 5,
-                    UnitPrice = 100m
+                    UnitPrice = 10m
                 }
             }
         };
 
+        // Act
+        var result = await _handler.Handle(command, CancellationToken.None);
 
-        var saleId = await _handler.Handle(command, CancellationToken.None);
+        // Assert
+        result.Should().NotBe(Guid.Empty);
 
-        var createdSale = await _context.Sales.Include(s => s.Items).FirstOrDefaultAsync(s => s.Id == saleId);
-        createdSale.Should().NotBeNull();
-        createdSale!.Items.Should().ContainSingle();
-        createdSale.TotalAmount.Should().Be(450m);
+        var sale = await _context.Sales
+            .Include(s => s.Items)
+            .FirstOrDefaultAsync(s => s.Id == result);
+
+        sale.Should().NotBeNull();
+        sale!.Items.Should().HaveCount(1);
+        sale.CustomerId.Should().Be(command.CustomerId);
+        sale.BranchId.Should().Be(command.BranchId);
+
+        _discountService.Received(1).ApplyDiscounts(Arg.Any<Sale>());
+        _eventLogger.Received(1).Log(Arg.Any<Sale>(), SaleEventType.SaleCreated);
     }
 }

@@ -7317,6 +7317,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Ambev.DeveloperEvaluation.Application >= 1.0.0",
+      "Ambev.DeveloperEvaluation.Common >= 1.0.0",
       "Ambev.DeveloperEvaluation.Domain >= 1.0.0",
       "Ambev.DeveloperEvaluation.ORM >= 1.0.0",
       "Ambev.DeveloperEvaluation.WebApi >= 1.0.0",
@@ -7367,6 +7368,9 @@
           "projectReferences": {
             "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Application\\Ambev.DeveloperEvaluation.Application.csproj": {
               "projectPath": "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Application\\Ambev.DeveloperEvaluation.Application.csproj"
+            },
+            "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Common\\Ambev.DeveloperEvaluation.Common.csproj": {
+              "projectPath": "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Common\\Ambev.DeveloperEvaluation.Common.csproj"
             },
             "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Domain\\Ambev.DeveloperEvaluation.Domain.csproj": {
               "projectPath": "C:\\Users\\Dionathan\\Desktop\\TesteNTTData\\developerstore\\Api\\src\\Ambev.DeveloperEvaluation.Domain\\Ambev.DeveloperEvaluation.Domain.csproj"

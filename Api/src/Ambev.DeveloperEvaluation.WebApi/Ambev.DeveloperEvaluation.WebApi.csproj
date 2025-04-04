@@ -34,4 +34,9 @@
     <Folder Include="Features\Users\UpdateUser\" />
   </ItemGroup>
 
+    <ItemGroup>
+	    <Compile Include="Features\Sales\**\*.cs" />
+    </ItemGroup>
+
+
 </Project>
